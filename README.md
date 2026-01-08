@@ -1,0 +1,94 @@
+# Burger O'clock 官方網站
+
+Burger O'clock 的現代化單頁式官方網站，使用 React + Tailwind CSS 打造。
+
+## 功能特色
+
+- 🎨 美式經典配色（黃、紅、黑）
+- 📱 完全響應式設計（RWD）
+- ✨ 滾動動畫效果
+- 🍔 精美菜單展示
+- 📍 Google Maps 整合
+- 🚀 外送服務連結
+
+## 技術棧
+
+- React 18
+- Vite
+- Tailwind CSS
+- 原生 JavaScript（滾動動畫）
+
+## 安裝與執行
+
+### 安裝依賴
+
+```bash
+npm install
+```
+
+### 開發模式
+
+```bash
+npm run dev
+```
+
+開發伺服器將在 `http://localhost:5173` 啟動
+
+### 建置生產版本
+
+```bash
+npm run build
+```
+
+### 預覽生產版本
+
+```bash
+npm run preview
+```
+
+## 專案結構
+
+```
+├── src/
+│   ├── components/
+│   │   ├── Hero.jsx          # 首頁大圖區
+│   │   ├── BrandStory.jsx    # 品牌故事
+│   │   ├── Menu.jsx          # 菜單與品牌合作
+│   │   ├── Information.jsx   # 營業資訊
+│   │   └── Delivery.jsx      # 外送服務
+│   ├── App.jsx               # 主應用組件
+│   ├── main.jsx              # 入口文件
+│   └── index.css             # 全域樣式
+├── index.html
+├── package.json
+├── tailwind.config.js
+└── vite.config.js
+```
+
+## 自訂內容
+
+### 修改地址與聯絡資訊
+
+編輯 `src/components/Information.jsx` 中的：
+- `address`: 店鋪地址
+- `phone`: 電話號碼
+- `instagram`: Instagram 連結
+- `facebook`: Facebook 連結
+
+### 修改菜單項目
+
+編輯 `src/components/Menu.jsx` 中的 `menuItems` 陣列。
+
+### 更換背景圖片
+
+在 `src/components/Hero.jsx` 中，將背景圖片 URL 替換為您的圖片連結。
+
+## 注意事項
+
+- 目前使用 Unsplash 的 placeholder 圖片，請替換為實際的漢堡圖片
+- 外送連結預設為 Uber Eats 首頁，請替換為實際的店鋪連結
+- 品牌合作資訊可根據實際情況更新
+
+## 授權
+
+此專案為 Burger O'clock 官方網站。
