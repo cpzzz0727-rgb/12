@@ -1,7 +1,4 @@
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
-
-// https://vitejs.dev/config/
-export default defineConfig({
-  plugins: [react()],
-})
+export default {
+  base: '/12/', // 這裡填入你的倉庫名稱，前後都要斜線
+  // ... 其他原本的設定
+}
