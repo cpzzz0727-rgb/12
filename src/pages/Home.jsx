@@ -1,8 +1,6 @@
 import { useEffect } from 'react'
 import Hero from '../components/Hero'
 import BrandStory from '../components/BrandStory'
-import Information from '../components/Information'
-import Delivery from '../components/Delivery'
 
 function Home() {
   useEffect(() => {
@@ -31,10 +29,10 @@ function Home() {
 
   return (
     <div className="min-h-screen">
-      <Hero />
+      <div className="pt-16">
+        <Hero />
+      </div>
       <BrandStory />
-      <Information />
-      <Delivery />
     </div>
   )
 }

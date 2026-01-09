@@ -16,7 +16,7 @@ function Hero() {
   }, [])
 
   return (
-    <section className="relative h-screen flex items-center justify-center overflow-hidden">
+    <section className="relative h-[calc(100vh-4rem)] flex items-center justify-center overflow-hidden -mt-16">
       {/* 背景圖片預留位置 */}
       <div className="absolute inset-0 bg-gradient-to-b from-burger-black via-burger-gray to-burger-black">
         <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=1920&q=80')] bg-cover bg-center opacity-30"></div>
@@ -24,7 +24,7 @@ function Hero() {
       </div>
 
       {/* 內容 */}
-      <div className="relative z-10 text-center px-4 fade-in">
+      <div className="relative z-10 text-center px-4 fade-in pt-16">
         <h1 className="text-6xl md:text-8xl lg:text-9xl font-bold mb-6 text-burger-yellow drop-shadow-2xl">
           Burger O'clock
         </h1>
