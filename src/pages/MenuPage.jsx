@@ -21,26 +21,51 @@ function MenuPage() {
   const filteredMenu = getFilteredMenu()
 
   return (
-    <div className="min-h-screen bg-white pt-20">
-      <div className="max-w-6xl mx-auto px-6 py-16">
+    <div style={{ minHeight: '100vh', backgroundColor: '#ffffff', paddingTop: '80px' }}>
+      <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '2rem 1.5rem' }}>
         {/* 頁面標題 */}
-        <div className="text-center mb-16">
-          <h1 className="text-5xl font-light text-gray-900 mb-4 tracking-wide">Menu</h1>
-          <div className="w-24 h-1 bg-gray-900 mx-auto"></div>
+        <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
+          <h1 style={{ 
+            fontSize: 'clamp(2rem, 5vw, 3rem)', 
+            fontWeight: 300, 
+            color: '#111827', 
+            marginBottom: '1rem',
+            letterSpacing: '0.05em'
+          }}>Menu</h1>
+          <div style={{ width: '96px', height: '4px', backgroundColor: '#111827', margin: '0 auto' }}></div>
         </div>
 
         {/* Tab 分類欄 */}
-        <div className="border-b border-gray-200 mb-12">
-          <div className="flex flex-wrap justify-center gap-2 md:gap-4">
+        <div style={{ borderBottom: '1px solid #e5e7eb', marginBottom: '3rem' }}>
+          <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '0.5rem' }}>
             {Object.keys(tabCategories).map((tab) => (
               <button
                 key={tab}
                 onClick={() => setActiveTab(tab)}
-                className={`px-8 py-4 text-sm md:text-base font-medium transition-all duration-300 border-b-2 ${
-                  activeTab === tab
-                    ? 'border-gray-900 text-gray-900'
-                    : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
-                }`}
+                style={{
+                  padding: '1rem 2rem',
+                  fontSize: 'clamp(0.875rem, 2vw, 1rem)',
+                  fontWeight: 500,
+                  border: 'none',
+                  borderBottom: activeTab === tab ? '2px solid #111827' : '2px solid transparent',
+                  color: activeTab === tab ? '#111827' : '#6b7280',
+                  backgroundColor: 'transparent',
+                  cursor: 'pointer',
+                  transition: 'all 0.3s',
+                  whiteSpace: 'nowrap'
+                }}
+                onMouseEnter={(e) => {
+                  if (activeTab !== tab) {
+                    e.target.style.color = '#111827'
+                    e.target.style.borderBottomColor = '#d1d5db'
+                  }
+                }}
+                onMouseLeave={(e) => {
+                  if (activeTab !== tab) {
+                    e.target.style.color = '#6b7280'
+                    e.target.style.borderBottomColor = 'transparent'
+                  }
+                }}
               >
                 {tab}
               </button>
@@ -49,22 +74,26 @@ function MenuPage() {
         </div>
 
         {/* 菜單內容區塊 */}
-        <div className="space-y-12">
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '3rem' }}>
           {filteredMenu.length === 0 ? (
-            <div className="text-center py-20">
-              <p className="text-gray-500 text-lg">該分類暫無商品</p>
+            <div style={{ textAlign: 'center', padding: '5rem 0' }}>
+              <p style={{ color: '#6b7280', fontSize: '1.125rem' }}>該分類暫無商品</p>
             </div>
           ) : (
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
+            <div style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+              gap: '2rem'
+            }}>
               {filteredMenu.map((item) => (
                 <div
                   key={item.id}
-                  className="border-b border-gray-100 pb-8 space-y-2"
+                  style={{ borderBottom: '1px solid #f3f4f6', paddingBottom: '2rem' }}
                 >
-                  <div className="flex items-start justify-between gap-4">
-                    <div className="flex-1">
-                      <div className="flex items-center gap-3 mb-1 flex-wrap">
-                        <h3 className="text-xl font-normal text-gray-900">
+                  <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: '1rem' }}>
+                    <div style={{ flex: 1 }}>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '0.25rem', flexWrap: 'wrap' }}>
+                        <h3 style={{ fontSize: '1.25rem', fontWeight: 400, color: '#111827', margin: 0 }}>
                           {item.name_zh}
                         </h3>
                         {item.isRecommended && (
@@ -86,14 +115,14 @@ function MenuPage() {
                           </span>
                         )}
                       </div>
-                      <p className="text-sm text-gray-500 mb-2">
+                      <p style={{ fontSize: '0.875rem', color: '#6b7280', marginBottom: '0.5rem', marginTop: 0 }}>
                         {item.name_en}
                       </p>
-                      <p className="text-sm text-gray-600 leading-relaxed">
+                      <p style={{ fontSize: '0.875rem', color: '#4b5563', lineHeight: '1.6', margin: 0 }}>
                         {item.description}
                       </p>
                     </div>
-                    <span className="text-xl font-light text-gray-900 whitespace-nowrap">
+                    <span style={{ fontSize: '1.25rem', fontWeight: 300, color: '#111827', whiteSpace: 'nowrap' }}>
                       ${item.price === 0 ? '???' : item.price}
                     </span>
                   </div>
@@ -104,21 +133,21 @@ function MenuPage() {
         </div>
 
         {/* 備註資訊 */}
-        <div className="mt-20 pt-12 border-t border-gray-200">
-          <div className="text-center space-y-4">
-            <p className="text-sm text-gray-600">
+        <div style={{ marginTop: '5rem', paddingTop: '3rem', borderTop: '1px solid #e5e7eb' }}>
+          <div style={{ textAlign: 'center', display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+            <p style={{ fontSize: '0.875rem', color: '#4b5563', margin: 0 }}>
               低消 100 元
             </p>
-            <p className="text-sm text-gray-600">
+            <p style={{ fontSize: '0.875rem', color: '#4b5563', margin: 0 }}>
               無服務費
             </p>
-            <p className="text-sm text-gray-600">
+            <p style={{ fontSize: '0.875rem', color: '#4b5563', margin: 0 }}>
               飲品請至櫃檯挑選
             </p>
-            <p className="text-sm text-gray-600 mt-6">
+            <p style={{ fontSize: '0.875rem', color: '#4b5563', marginTop: '1.5rem', marginBottom: 0 }}>
               * 以上漢堡皆可升級套餐
             </p>
-            <p className="text-sm text-gray-600">
+            <p style={{ fontSize: '0.875rem', color: '#4b5563', margin: 0 }}>
               * 加35元漢堡肉即可換特醃雞腿排
             </p>
           </div>
