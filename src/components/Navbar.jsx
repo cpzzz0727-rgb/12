@@ -4,51 +4,114 @@ function Navbar() {
   const location = useLocation()
 
   const isActive = (path) => {
-    const currentPath = location.pathname
+    const currentPath = location.pathname.replace('/12', '')
     if (path === '/') {
-      return currentPath === '/' || currentPath === '/12/' || currentPath === '/12'
+      return currentPath === '/' || currentPath === ''
     }
-    return currentPath === path || currentPath === `/12${path}`
+    return currentPath === path
   }
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-[99999] bg-white border-b border-gray-200 shadow-sm" style={{ position: 'fixed', top: 0, left: 0, right: 0, zIndex: 99999 }}>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
+    <nav 
+      style={{ 
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        right: 0,
+        zIndex: 99999,
+        backgroundColor: '#ffffff',
+        borderBottom: '1px solid #e5e7eb',
+        boxShadow: '0 1px 3px 0 rgba(0, 0, 0, 0.1)',
+        width: '100%'
+      }}
+    >
+      <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 1rem' }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', height: '64px' }}>
           <Link 
             to="/" 
-            className="text-base sm:text-lg font-light text-gray-900 hover:text-gray-600 transition-colors tracking-wide whitespace-nowrap"
+            style={{ 
+              fontSize: '1.125rem',
+              fontWeight: 300,
+              color: '#111827',
+              textDecoration: 'none',
+              letterSpacing: '0.05em',
+              whiteSpace: 'nowrap'
+            }}
+            onMouseEnter={(e) => e.target.style.color = '#4b5563'}
+            onMouseLeave={(e) => e.target.style.color = '#111827'}
           >
             BURGER O'CLOCK TAIPEI
           </Link>
-          <div className="flex items-center gap-4 sm:gap-8">
+          <div style={{ display: 'flex', alignItems: 'center', gap: '2rem' }}>
             <Link
               to="/"
-              className={`text-xs sm:text-sm font-medium transition-all duration-200 pb-1 px-2 ${
-                isActive('/')
-                  ? 'text-gray-900 border-b-2 border-gray-900'
-                  : 'text-gray-600 hover:text-gray-900'
-              }`}
+              style={{ 
+                fontSize: '0.875rem',
+                fontWeight: 500,
+                color: isActive('/') ? '#111827' : '#4b5563',
+                textDecoration: 'none',
+                paddingBottom: '4px',
+                borderBottom: isActive('/') ? '2px solid #111827' : 'none',
+                transition: 'all 0.2s'
+              }}
+              onMouseEnter={(e) => {
+                if (!isActive('/')) {
+                  e.target.style.color = '#111827'
+                }
+              }}
+              onMouseLeave={(e) => {
+                if (!isActive('/')) {
+                  e.target.style.color = '#4b5563'
+                }
+              }}
             >
               首頁
             </Link>
             <Link
               to="/menu"
-              className={`text-xs sm:text-sm font-medium transition-all duration-200 pb-1 px-2 ${
-                isActive('/menu')
-                  ? 'text-gray-900 border-b-2 border-gray-900'
-                  : 'text-gray-600 hover:text-gray-900'
-              }`}
+              style={{ 
+                fontSize: '0.875rem',
+                fontWeight: 500,
+                color: isActive('/menu') ? '#111827' : '#4b5563',
+                textDecoration: 'none',
+                paddingBottom: '4px',
+                borderBottom: isActive('/menu') ? '2px solid #111827' : 'none',
+                transition: 'all 0.2s'
+              }}
+              onMouseEnter={(e) => {
+                if (!isActive('/menu')) {
+                  e.target.style.color = '#111827'
+                }
+              }}
+              onMouseLeave={(e) => {
+                if (!isActive('/menu')) {
+                  e.target.style.color = '#4b5563'
+                }
+              }}
             >
               美味菜單
             </Link>
             <Link
               to="/info"
-              className={`text-xs sm:text-sm font-medium transition-all duration-200 pb-1 px-2 ${
-                isActive('/info')
-                  ? 'text-gray-900 border-b-2 border-gray-900'
-                  : 'text-gray-600 hover:text-gray-900'
-              }`}
+              style={{ 
+                fontSize: '0.875rem',
+                fontWeight: 500,
+                color: isActive('/info') ? '#111827' : '#4b5563',
+                textDecoration: 'none',
+                paddingBottom: '4px',
+                borderBottom: isActive('/info') ? '2px solid #111827' : 'none',
+                transition: 'all 0.2s'
+              }}
+              onMouseEnter={(e) => {
+                if (!isActive('/info')) {
+                  e.target.style.color = '#111827'
+                }
+              }}
+              onMouseLeave={(e) => {
+                if (!isActive('/info')) {
+                  e.target.style.color = '#4b5563'
+                }
+              }}
             >
               聯絡資訊
             </Link>
