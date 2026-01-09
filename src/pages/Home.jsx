@@ -25,12 +25,13 @@ function Home() {
       <section style={{ 
         position: 'relative',
         width: '100%',
-        minHeight: 'calc(100vh - 64px)',
-        height: 'calc(100vh - 64px)',
+        minHeight: 'clamp(400px, calc(100vh - 64px), 800px)',
+        height: 'auto',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        overflow: 'hidden'
+        overflow: 'hidden',
+        padding: 'clamp(2rem, 8vw, 4rem) clamp(0.75rem, 3vw, 1rem)'
       }}>
         {/* 背景圖片 */}
         <div style={{
@@ -104,18 +105,19 @@ function Home() {
         position: 'relative',
         width: '100%',
         backgroundColor: '#ffffff',
-        paddingTop: '5rem',
-        paddingBottom: '5rem',
-        paddingLeft: '1rem',
-        paddingRight: '1rem'
+        paddingTop: 'clamp(2rem, 5vw, 5rem)',
+        paddingBottom: 'clamp(2rem, 5vw, 5rem)',
+        paddingLeft: 'clamp(0.75rem, 2vw, 1rem)',
+        paddingRight: 'clamp(0.75rem, 2vw, 1rem)'
       }}>
         <div style={{
           maxWidth: '1200px',
-          margin: '0 auto'
+          margin: '0 auto',
+          width: '100%'
         }}>
           <div style={{
             width: '100%',
-            height: '400px',
+            height: 'clamp(250px, 50vw, 400px)',
             borderRadius: '8px',
             overflow: 'hidden',
             boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)'
@@ -136,16 +138,17 @@ function Home() {
             textAlign: 'center'
           }}>
             <p style={{
-              fontSize: '0.875rem',
+              fontSize: 'clamp(0.75rem, 2vw, 0.875rem)',
               color: '#4b5563',
-              margin: '0 0 1.5rem 0'
+              margin: '0 0 1.5rem 0',
+              padding: '0 0.5rem'
             }}>
               📍 台北市士林區中山北路七段36號
             </p>
             
             {/* Uber Eats 按鈕 */}
             <a
-              href="https://www.ubereats.com/tw/tw/store/burger-oclock/xxxxx"
+              href="https://www.ubereats.com/tw/store/burger-oclock/N3XkkaJGRDCjAt-GaT6iXQ"
               target="_blank"
               rel="noopener noreferrer"
               style={{
@@ -153,15 +156,16 @@ function Home() {
                 alignItems: 'center',
                 justifyContent: 'center',
                 gap: '0.5rem',
-                padding: '0.875rem 1.5rem',
+                padding: 'clamp(0.75rem, 2vw, 0.875rem) clamp(1rem, 3vw, 1.5rem)',
                 backgroundColor: '#000000',
                 color: '#ffffff',
                 textDecoration: 'none',
                 borderRadius: '8px',
-                fontSize: '1rem',
+                fontSize: 'clamp(0.875rem, 2.5vw, 1rem)',
                 fontWeight: 600,
                 transition: 'all 0.3s ease',
-                border: '2px solid #000000'
+                border: '2px solid #000000',
+                whiteSpace: 'nowrap'
               }}
               onMouseEnter={(e) => {
                 e.currentTarget.style.backgroundColor = '#ffffff'
@@ -177,8 +181,11 @@ function Home() {
                 height="20"
                 viewBox="0 0 24 24"
                 fill="currentColor"
+                aria-hidden="true"
                 style={{
-                  flexShrink: 0
+                  flexShrink: 0,
+                  width: 'clamp(16px, 4vw, 20px)',
+                  height: 'clamp(16px, 4vw, 20px)'
                 }}
               >
                 <path d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-8 2a2 2 0 1 1-4 0 2 2 0 0 1 4 0z" />
@@ -194,31 +201,33 @@ function Home() {
         position: 'relative',
         width: '100%',
         backgroundColor: '#111827',
-        paddingTop: '5rem',
-        paddingBottom: '5rem',
-        paddingLeft: '1rem',
-        paddingRight: '1rem'
+        paddingTop: 'clamp(2rem, 5vw, 5rem)',
+        paddingBottom: 'clamp(2rem, 5vw, 5rem)',
+        paddingLeft: 'clamp(0.75rem, 2vw, 1rem)',
+        paddingRight: 'clamp(0.75rem, 2vw, 1rem)'
       }}>
         <div style={{
           maxWidth: '1200px',
-          margin: '0 auto'
+          margin: '0 auto',
+          width: '100%'
         }}>
           {/* 標題 */}
           <div style={{
             textAlign: 'center',
-            marginBottom: '3rem'
+            marginBottom: 'clamp(1.5rem, 4vw, 3rem)'
           }}>
             <h2 style={{
-              fontSize: 'clamp(2rem, 5vw, 3rem)',
+              fontSize: 'clamp(1.75rem, 5vw, 3rem)',
               fontWeight: 300,
               color: '#ffffff',
               marginBottom: '1rem',
-              letterSpacing: '0.05em'
+              letterSpacing: '0.05em',
+              padding: '0 0.5rem'
             }}>
               熱賣餐點
             </h2>
             <div style={{
-              width: '128px',
+              width: 'clamp(96px, 20vw, 128px)',
               height: '4px',
               backgroundColor: '#fbbf24',
               margin: '0 auto'
@@ -228,12 +237,12 @@ function Home() {
           {/* 推薦菜品網格 */}
           <div style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
-            gap: '2rem',
-            marginTop: '3rem'
+            gridTemplateColumns: 'repeat(auto-fit, minmax(min(280px, 100%), 1fr))',
+            gap: 'clamp(1rem, 3vw, 2rem)',
+            marginTop: 'clamp(1.5rem, 4vw, 3rem)'
           }}>
             {recommendedItems.map((item, index) => (
-              <div
+              <article
                 key={item.id}
                 style={{
                   backgroundColor: '#1f2937',
@@ -255,13 +264,13 @@ function Home() {
                 {/* 圖片 */}
                 <div style={{
                   width: '100%',
-                  height: '200px',
+                  height: 'clamp(180px, 40vw, 200px)',
                   overflow: 'hidden',
                   backgroundColor: '#374151'
                 }}>
                   <img
                     src={itemImages[index] || itemImages[0]}
-                    alt={item.name_zh}
+                    alt={`${item.name_zh}（${item.name_en}）美式漢堡照片`}
                     style={{
                       width: '100%',
                       height: '100%',
@@ -279,38 +288,41 @@ function Home() {
 
                 {/* 內容 */}
                 <div style={{
-                  padding: '1.5rem'
+                  padding: 'clamp(1rem, 3vw, 1.5rem)'
                 }}>
                   <div style={{
                     display: 'flex',
                     alignItems: 'center',
                     gap: '0.5rem',
-                    marginBottom: '0.5rem'
+                    marginBottom: '0.5rem',
+                    flexWrap: 'wrap'
                   }}>
                     <h3 style={{
-                      fontSize: '1.25rem',
+                      fontSize: 'clamp(1rem, 3vw, 1.25rem)',
                       fontWeight: 600,
                       color: '#ffffff',
                       margin: 0,
-                      flex: 1
+                      flex: '1 1 auto',
+                      minWidth: '120px'
                     }}>
                       {item.name_zh}
                     </h3>
                     <span style={{
-                      fontSize: '0.75rem',
+                      fontSize: 'clamp(0.625rem, 2vw, 0.75rem)',
                       fontWeight: 800,
-                      padding: '0.25rem 0.75rem',
+                      padding: 'clamp(0.25rem, 1vw, 0.375rem) clamp(0.5rem, 2vw, 0.75rem)',
                       borderRadius: '12px',
                       backgroundColor: '#fbbf24',
                       color: '#1f2937',
-                      letterSpacing: '0.05em'
+                      letterSpacing: '0.05em',
+                      whiteSpace: 'nowrap'
                     }}>
                       推薦
                     </span>
                   </div>
                   
                   <p style={{
-                    fontSize: '0.875rem',
+                    fontSize: 'clamp(0.75rem, 2vw, 0.875rem)',
                     color: '#9ca3af',
                     margin: '0 0 0.75rem 0',
                     lineHeight: 1.5
@@ -319,7 +331,7 @@ function Home() {
                   </p>
 
                   <p style={{
-                    fontSize: '0.875rem',
+                    fontSize: 'clamp(0.75rem, 2vw, 0.875rem)',
                     color: '#d1d5db',
                     margin: '0 0 1rem 0',
                     lineHeight: 1.6
@@ -335,7 +347,7 @@ function Home() {
                     borderTop: '1px solid #374151'
                   }}>
                     <span style={{
-                      fontSize: '1.5rem',
+                      fontSize: 'clamp(1.25rem, 4vw, 1.5rem)',
                       fontWeight: 300,
                       color: '#fbbf24'
                     }}>
@@ -343,7 +355,7 @@ function Home() {
                     </span>
                   </div>
                 </div>
-              </div>
+              </article>
             ))}
           </div>
         </div>
