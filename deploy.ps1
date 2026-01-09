@@ -31,6 +31,14 @@ Write-Host "[3/4] Copying dist/ content to root directory..." -ForegroundColor Y
 if (Test-Path "dist") {
     Copy-Item -Path "dist\*" -Destination "." -Recurse -Force
     Write-Host "OK: Files copied" -ForegroundColor Green
+    
+    # Ensure .nojekyll file exists in root (for GitHub Pages)
+    if (Test-Path ".nojekyll") {
+        Write-Host "OK: .nojekyll file exists" -ForegroundColor Green
+    } else {
+        New-Item -Path ".nojekyll" -ItemType File -Force | Out-Null
+        Write-Host "OK: .nojekyll file created" -ForegroundColor Green
+    }
 } else {
     Write-Host "ERROR: dist folder does not exist! Build may have failed." -ForegroundColor Red
     exit 1
@@ -55,40 +63,48 @@ $indexHtml = Get-Content "index.html" -Raw -Encoding UTF8
 $jsFile = $jsFiles[0]
 $cssFile = $cssFiles[0]
 
-# Check JS reference
-if ($indexHtml -match 'src="\./assets/([^"]+)"') {
+# Check JS reference - use more robust pattern matching
+$jsPattern = 'src="\./assets/([^"]+)"'
+if ($indexHtml -match $jsPattern) {
     $referencedJs = $matches[1]
     if ($referencedJs -ne $jsFile) {
         Write-Host "WARNING: index.html JS reference ($referencedJs) does not match actual file ($jsFile)" -ForegroundColor Yellow
         Write-Host "  Auto-fixing..." -ForegroundColor Yellow
-        $indexHtml = $indexHtml -replace 'src="\./assets/[^"]+"', "src=`"./assets/$jsFile`""
+        $indexHtml = $indexHtml -replace [regex]::Escape("src=`"./assets/$referencedJs`""), "src=`"./assets/$jsFile`""
     } else {
         Write-Host "OK: JS reference correct: $jsFile" -ForegroundColor Green
     }
 } else {
     Write-Host "WARNING: Could not find JS reference in index.html" -ForegroundColor Yellow
-    $indexHtml = $indexHtml -replace '<script type="module" crossorigin src="[^"]+"></script>', "<script type=`"module`" crossorigin src=`"./assets/$jsFile`"></script>"
     Write-Host "  Auto-fixing JS reference..." -ForegroundColor Yellow
+    # Find and replace the script tag
+    $scriptPattern = '<script type="module" crossorigin src="[^"]+"></script>'
+    $newScriptTag = "<script type=`"module`" crossorigin src=`"./assets/$jsFile`"></script>"
+    $indexHtml = $indexHtml -replace $scriptPattern, $newScriptTag
 }
 
-# Check CSS reference
-if ($indexHtml -match 'href="\./assets/([^"]+)"') {
+# Check CSS reference - use more robust pattern matching
+$cssPattern = 'href="\./assets/([^"]+)"'
+if ($indexHtml -match $cssPattern) {
     $referencedCss = $matches[1]
     if ($referencedCss -ne $cssFile) {
         Write-Host "WARNING: index.html CSS reference ($referencedCss) does not match actual file ($cssFile)" -ForegroundColor Yellow
         Write-Host "  Auto-fixing..." -ForegroundColor Yellow
-        $indexHtml = $indexHtml -replace 'href="\./assets/[^"]+"', "href=`"./assets/$cssFile`""
+        $indexHtml = $indexHtml -replace [regex]::Escape("href=`"./assets/$referencedCss`""), "href=`"./assets/$cssFile`""
     } else {
         Write-Host "OK: CSS reference correct: $cssFile" -ForegroundColor Green
     }
 } else {
     Write-Host "WARNING: Could not find CSS reference in index.html" -ForegroundColor Yellow
-    $indexHtml = $indexHtml -replace '<link rel="stylesheet" crossorigin href="[^"]+">', "<link rel=`"stylesheet`" crossorigin href=`"./assets/$cssFile`">"
     Write-Host "  Auto-fixing CSS reference..." -ForegroundColor Yellow
+    # Find and replace the link tag
+    $linkPattern = '<link rel="stylesheet" crossorigin href="[^"]+">'
+    $newLinkTag = "<link rel=`"stylesheet`" crossorigin href=`"./assets/$cssFile`">"
+    $indexHtml = $indexHtml -replace $linkPattern, $newLinkTag
 }
 
 # Save the fixed index.html
-Set-Content -Path "index.html" -Value $indexHtml -NoNewline -Encoding UTF8
+[System.IO.File]::WriteAllText((Resolve-Path "index.html"), $indexHtml, [System.Text.Encoding]::UTF8)
 
 Write-Host ""
 Write-Host "========================================" -ForegroundColor Cyan
