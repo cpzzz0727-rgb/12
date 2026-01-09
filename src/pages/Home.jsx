@@ -8,7 +8,7 @@ function Home() {
   const itemImages = [
     'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=800&q=80', // 汉堡
     'https://images.unsplash.com/photo-1550547660-d9450f859349?w=800&q=80', // 汉堡
-    'https://images.unsplash.com/photo-1553979459-d2229ba7433f?w=800&q=80', // 汉堡
+    'https://images.unsplash.com/photo-1572802419224-296b0aeee0d9?w=800&q=80', // 起司三重奏 - 新圖片
     'https://images.unsplash.com/photo-1528607929212-2636ec44253e?w=800&q=80', // 汉堡
     'https://images.unsplash.com/photo-1551782450-17144efb9c50?w=800&q=80', // 汉堡
     'https://images.unsplash.com/photo-1550547660-d9450f859349?w=800&q=80', // 汉堡
@@ -138,10 +138,53 @@ function Home() {
             <p style={{
               fontSize: '0.875rem',
               color: '#4b5563',
-              margin: 0
+              margin: '0 0 1.5rem 0'
             }}>
               📍 台北市士林區中山北路七段36號
             </p>
+            
+            {/* Uber Eats 按鈕 */}
+            <a
+              href="https://www.ubereats.com/tw/tw/store/burger-oclock/xxxxx"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                gap: '0.5rem',
+                padding: '0.875rem 1.5rem',
+                backgroundColor: '#000000',
+                color: '#ffffff',
+                textDecoration: 'none',
+                borderRadius: '8px',
+                fontSize: '1rem',
+                fontWeight: 600,
+                transition: 'all 0.3s ease',
+                border: '2px solid #000000'
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.backgroundColor = '#ffffff'
+                e.currentTarget.style.color = '#000000'
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.backgroundColor = '#000000'
+                e.currentTarget.style.color = '#ffffff'
+              }}
+            >
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                style={{
+                  flexShrink: 0
+                }}
+              >
+                <path d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-8 2a2 2 0 1 1-4 0 2 2 0 0 1 4 0z" />
+              </svg>
+              前往 UBER EATS
+            </a>
           </div>
         </div>
       </section>

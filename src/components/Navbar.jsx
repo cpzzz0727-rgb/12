@@ -10,6 +10,19 @@ function Navbar() {
     setIsMenuOpen(false)
   }, [location.pathname])
 
+  // 當選單開啟時鎖定 body 滾動，關閉時解除
+  useEffect(() => {
+    if (isMenuOpen) {
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = ''
+    }
+    // 清理函數：組件卸載時恢復滾動
+    return () => {
+      document.body.style.overflow = ''
+    }
+  }, [isMenuOpen])
+
   const isActive = (path) => {
     let currentPath = location.pathname
     if (currentPath.startsWith('/12')) {
@@ -120,10 +133,15 @@ function Navbar() {
                 color: '#111827',
                 transition: 'color 0.2s',
                 outline: 'none',
-                zIndex: 100000
+                zIndex: 99999,
+                position: 'relative'
               }}
-              onMouseEnter={(e) => e.currentTarget.style.color = '#4b5563'}
-              onMouseLeave={(e) => e.currentTarget.style.color = '#111827'}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.color = '#4b5563'
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.color = '#111827'
+              }}
               aria-label={isMenuOpen ? '關閉選單' : '開啟選單'}
               aria-expanded={isMenuOpen}
             >
@@ -133,78 +151,86 @@ function Navbar() {
         </div>
       </nav>
 
-      {/* 側邊欄選單 - 所有尺寸都使用 */}
+      {/* 全螢幕選單 - 所有尺寸都使用 */}
       <>
-        {/* 半透明遮罩 */}
+        {/* 全螢幕選單容器 */}
         <div
-          onClick={toggleMenu}
           style={{
             position: 'fixed',
             top: 0,
             left: 0,
-            right: 0,
-            bottom: 0,
-            backgroundColor: 'rgba(0, 0, 0, 0.5)',
-            zIndex: 99998,
+            width: '100vw',
+            height: '100vh',
+            zIndex: 99997,
             opacity: isMenuOpen ? 1 : 0,
             visibility: isMenuOpen ? 'visible' : 'hidden',
             transition: 'opacity 0.3s ease, visibility 0.3s ease',
-            pointerEvents: isMenuOpen ? 'auto' : 'none'
+            pointerEvents: isMenuOpen ? 'auto' : 'none',
+            backgroundColor: 'rgba(0, 0, 0, 0.5)',
+            backdropFilter: isMenuOpen ? 'blur(8px)' : 'blur(0px)',
+            WebkitBackdropFilter: isMenuOpen ? 'blur(8px)' : 'blur(0px)'
           }}
-        />
-
-        {/* 側邊欄 */}
-        <div
-          style={{
-            position: 'fixed',
-            top: '64px',
-            right: 0,
-            width: '320px',
-            maxWidth: '85vw',
-            height: 'calc(100vh - 64px)',
-            backgroundColor: '#ffffff',
-            zIndex: 99999,
-            boxShadow: '-2px 0 8px rgba(0, 0, 0, 0.15)',
-            transform: isMenuOpen ? 'translateX(0)' : 'translateX(100%)',
-            transition: 'transform 0.3s ease-in-out',
-            overflowY: 'auto'
-          }}
+          onClick={toggleMenu}
         >
-          <div style={{
-            display: 'flex',
-            flexDirection: 'column',
-            padding: '1.5rem 0'
-          }}>
-            {menuItems.map((item, index) => (
+          {/* 選單內容容器 */}
+          <div
+            style={{
+              position: 'absolute',
+              top: 0,
+              left: 0,
+              width: '100%',
+              height: '100%',
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              justifyContent: 'center',
+              gap: '1.5rem',
+              transform: isMenuOpen ? 'translateY(0)' : 'translateY(-20px)',
+              transition: 'transform 0.3s ease',
+              padding: '2rem'
+            }}
+            onClick={(e) => e.stopPropagation()}
+          >
+            {menuItems.map((item) => (
               <Link
                 key={item.path}
                 to={item.path}
                 onClick={toggleMenu}
                 style={{
-                  padding: '1.25rem 2rem',
-                  fontSize: '1.125rem',
-                  fontWeight: isActive(item.path) ? 600 : 500,
-                  color: isActive(item.path) ? '#111827' : '#4b5563',
+                  padding: '1rem 2rem',
+                  fontSize: 'clamp(1.5rem, 4vw, 2.5rem)',
+                  fontWeight: isActive(item.path) ? 600 : 400,
+                  color: isActive(item.path) ? '#ffffff' : '#e5e7eb',
                   textDecoration: 'none',
-                  borderLeft: isActive(item.path) ? '4px solid #111827' : '4px solid transparent',
-                  backgroundColor: isActive(item.path) ? '#f9fafb' : 'transparent',
-                  transition: 'all 0.2s',
-                  borderBottom: index < menuItems.length - 1 ? '1px solid #e5e7eb' : 'none'
+                  backgroundColor: 'transparent',
+                  transition: 'all 0.3s ease',
+                  letterSpacing: '0.05em',
+                  textAlign: 'center',
+                  position: 'relative'
                 }}
                 onMouseEnter={(e) => {
-                  if (!isActive(item.path)) {
-                    e.target.style.backgroundColor = '#f9fafb'
-                    e.target.style.color = '#111827'
-                  }
+                  e.target.style.color = '#ffffff'
+                  e.target.style.transform = 'scale(1.05)'
                 }}
                 onMouseLeave={(e) => {
-                  if (!isActive(item.path)) {
-                    e.target.style.backgroundColor = 'transparent'
-                    e.target.style.color = '#4b5563'
-                  }
+                  e.target.style.color = isActive(item.path) ? '#ffffff' : '#e5e7eb'
+                  e.target.style.transform = 'scale(1)'
                 }}
               >
                 {item.label}
+                {isActive(item.path) && (
+                  <span
+                    style={{
+                      position: 'absolute',
+                      bottom: '-4px',
+                      left: '50%',
+                      transform: 'translateX(-50%)',
+                      width: '60px',
+                      height: '2px',
+                      backgroundColor: '#fbbf24'
+                    }}
+                  />
+                )}
               </Link>
             ))}
           </div>
