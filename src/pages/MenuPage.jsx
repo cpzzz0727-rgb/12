@@ -63,22 +63,26 @@ function MenuPage() {
                 >
                   <div className="flex items-start justify-between gap-4">
                     <div className="flex-1">
-                      <div className="flex items-center gap-2 mb-1">
+                      <div className="flex items-center gap-3 mb-1 flex-wrap">
                         <h3 className="text-xl font-normal text-gray-900">
                           {item.name_zh}
                         </h3>
                         {item.isRecommended && (
                           <span 
-                            className="text-xs font-bold px-3 py-1 rounded-md inline-flex items-center gap-1"
+                            className="text-xs font-bold px-3 py-1.5 rounded-lg inline-flex items-center gap-1.5"
                             style={{
                               backgroundColor: '#fbbf24',
                               color: '#1f2937',
-                              fontWeight: 700,
-                              letterSpacing: '0.05em',
-                              boxShadow: '0 2px 4px rgba(251, 191, 36, 0.3)'
+                              fontWeight: 800,
+                              letterSpacing: '0.08em',
+                              boxShadow: '0 3px 6px rgba(251, 191, 36, 0.4)',
+                              border: '1px solid rgba(251, 191, 36, 0.5)',
+                              fontSize: '0.75rem',
+                              lineHeight: '1.2'
                             }}
                           >
-                            ⭐ 推薦
+                            <span style={{ fontSize: '0.875rem' }}>⭐</span>
+                            <span>推薦</span>
                           </span>
                         )}
                       </div>
