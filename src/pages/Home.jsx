@@ -1,15 +1,17 @@
 function Home() {
   return (
     <div style={{ 
-      paddingTop: '64px',
+      width: '100%',
       display: 'flex',
-      flexDirection: 'column'
+      flexDirection: 'column',
+      marginTop: '64px'
     }}>
       {/* 第一區塊：漢堡大圖與歡迎詞 (Hero Section) - 滿屏 */}
       <section style={{ 
         position: 'relative',
-        height: 'calc(100vh - 64px)',
         width: '100%',
+        minHeight: 'calc(100vh - 64px)',
+        height: 'calc(100vh - 64px)',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
