@@ -5,10 +5,10 @@ function Home() {
       display: 'flex',
       flexDirection: 'column'
     }}>
-      {/* 第一區塊：漢堡大圖與歡迎詞 (Hero Section) */}
+      {/* 第一區塊：漢堡大圖與歡迎詞 (Hero Section) - 滿屏 */}
       <section style={{ 
         position: 'relative',
-        minHeight: 'calc(100vh - 64px)',
+        height: 'calc(100vh - 64px)',
         width: '100%',
         display: 'flex',
         alignItems: 'center',
