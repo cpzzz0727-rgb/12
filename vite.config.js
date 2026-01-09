@@ -1,4 +1,7 @@
-export default {
-  base: '/12/', // 必須跟你 GitHub 倉庫名稱一致，前後都要斜線
-  // ... 其他設定
-}
+import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react' // 把這一行改成這樣
+
+export default defineConfig({
+  plugins: [react()],
+  base: '/12/', 
+})
