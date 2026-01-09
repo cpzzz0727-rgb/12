@@ -1,24 +1,6 @@
 import { useState } from 'react'
 import menuData from '../menuData.ts'
 
-const collaborations = [
-  {
-    name: '咖啡品牌聯名',
-    description: '與在地精品咖啡店合作，推出咖啡風味漢堡',
-    status: '進行中'
-  },
-  {
-    name: '精釀啤酒聯名',
-    description: '與精釀啤酒廠合作，打造完美搭配組合',
-    status: '規劃中'
-  },
-  {
-    name: '文創品牌聯名',
-    description: '與在地文創品牌合作，推出限定包裝與口味',
-    status: '規劃中'
-  }
-]
-
 // 導覽分類映射
 const navCategories = {
   '牛肉堡': ['牛肉堡'],
@@ -148,53 +130,6 @@ function Menu() {
           )}
         </div>
 
-        {/* 品牌合作區塊 */}
-        <div className="fade-in mt-20">
-          <h2 className="text-4xl md:text-6xl font-bold text-center mb-12 text-burger-yellow">
-            品牌合作開發
-          </h2>
-          
-          <div className="max-w-4xl mx-auto">
-            <p className="text-center text-lg text-white/80 mb-12">
-              我們致力於與不同領域的品牌合作，創造獨特的味覺體驗與文化連結。
-            </p>
-            
-            <div className="grid md:grid-cols-3 gap-6">
-              {collaborations.map((collab, index) => (
-                <div
-                  key={index}
-                  className="bg-burger-gray/50 p-6 rounded-lg border border-burger-yellow/30 hover:border-burger-yellow transition-all"
-                >
-                  <h3 className="text-xl font-bold text-burger-yellow mb-3">
-                    {collab.name}
-                  </h3>
-                  <p className="text-white/70 mb-4 text-sm">
-                    {collab.description}
-                  </p>
-                  <span className={`inline-block px-3 py-1 rounded-full text-xs font-semibold ${
-                    collab.status === '進行中'
-                      ? 'bg-burger-red text-white'
-                      : 'bg-burger-gray text-burger-yellow border border-burger-yellow'
-                  }`}>
-                    {collab.status}
-                  </span>
-                </div>
-              ))}
-            </div>
-            
-            <div className="mt-12 text-center">
-              <p className="text-white/60 mb-4">
-                有興趣與我們合作嗎？
-              </p>
-              <a
-                href="#information"
-                className="inline-block bg-burger-yellow text-burger-black px-8 py-3 rounded-lg font-bold hover:bg-burger-yellow/90 transition-colors"
-              >
-                聯絡我們
-              </a>
-            </div>
-          </div>
-        </div>
       </div>
     </section>
   )
