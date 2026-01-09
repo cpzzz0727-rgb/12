@@ -10,11 +10,11 @@ const tabCategories = {
 }
 
 function MenuPage() {
-  const [activeTab, setActiveTab] = useState<string>('牛肉堡')
+  const [activeTab, setActiveTab] = useState('牛肉堡')
 
   // 根據選中的 Tab 過濾菜單
   const getFilteredMenu = () => {
-    const categoriesToShow = tabCategories[activeTab as keyof typeof tabCategories] || []
+    const categoriesToShow = tabCategories[activeTab] || []
     return menuData.filter(item => categoriesToShow.includes(item.category))
   }
 
