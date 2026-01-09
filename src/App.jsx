@@ -60,7 +60,7 @@ function App() {
             }}>
               {/* Facebook 按鈕 */}
               <a
-                href="https://www.facebook.com"
+                href="https://www.facebook.com/burgeroclocktaipei/"
                 target="_blank"
                 rel="noopener noreferrer"
                 style={{
@@ -100,7 +100,7 @@ function App() {
 
               {/* Instagram 按鈕 */}
               <a
-                href="https://www.instagram.com"
+                href="https://www.instagram.com/burgeroclocktaipei/"
                 target="_blank"
                 rel="noopener noreferrer"
                 style={{
@@ -140,7 +140,7 @@ function App() {
 
               {/* Uber Eats 按鈕 */}
               <a
-                href="https://www.ubereats.com"
+                href="https://www.ubereats.com/tw/store/burger-oclock/N3XkkaJGRDCjAt-GaT6iXQ"
                 target="_blank"
                 rel="noopener noreferrer"
                 style={{
@@ -154,38 +154,27 @@ function App() {
                   justifyContent: 'center',
                   textDecoration: 'none',
                   transition: 'all 0.3s ease',
-                  cursor: 'pointer'
+                  cursor: 'pointer',
+                  fontWeight: 700
                 }}
                 onMouseEnter={(e) => {
                   e.currentTarget.style.backgroundColor = '#ffffff'
-                  const svg = e.currentTarget.querySelector('svg')
-                  if (svg) {
-                    svg.style.stroke = '#111827'
-                    svg.style.fill = '#111827'
-                  }
+                  e.currentTarget.style.color = '#111827'
                 }}
                 onMouseLeave={(e) => {
                   e.currentTarget.style.backgroundColor = 'transparent'
-                  const svg = e.currentTarget.querySelector('svg')
-                  if (svg) {
-                    svg.style.stroke = '#ffffff'
-                    svg.style.fill = '#ffffff'
-                  }
+                  e.currentTarget.style.color = '#ffffff'
                 }}
               >
-                <svg
-                  width="20"
-                  height="20"
-                  viewBox="0 0 24 24"
-                  fill="#ffffff"
-                  stroke="#ffffff"
-                  strokeWidth="1.5"
-                  style={{
-                    transition: 'fill 0.3s ease, stroke 0.3s ease'
-                  }}
-                >
-                  <path d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-8 2a2 2 0 1 1-4 0 2 2 0 0 1 4 0z" />
-                </svg>
+                <span style={{
+                  color: '#ffffff',
+                  fontSize: '1rem',
+                  fontWeight: 700,
+                  letterSpacing: '0.05em',
+                  transition: 'color 0.3s ease'
+                }}>
+                  UE
+                </span>
               </a>
             </div>
           </div>
