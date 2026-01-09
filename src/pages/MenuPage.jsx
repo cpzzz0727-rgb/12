@@ -4,9 +4,9 @@ import menuData from '../menuData.ts'
 // Tab 分類映射
 const tabCategories = {
   '牛肉堡': ['牛肉堡'],
-  '雞肉/熱狗': ['雞肉堡', '熱狗', '素食'],
+  '雞肉': ['雞肉堡', '熱狗', '素食'],
   '點心': ['點心'],
-  '飲品甜點': ['飲品/甜點']
+  '飲料': ['飲品/甜點']
 }
 
 function MenuPage() {

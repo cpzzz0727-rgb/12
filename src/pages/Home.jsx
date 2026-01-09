@@ -1,38 +1,18 @@
-import { useEffect } from 'react'
-import Hero from '../components/Hero'
-import BrandStory from '../components/BrandStory'
-
 function Home() {
-  useEffect(() => {
-    // 滾動動畫觀察器
-    const observerOptions = {
-      threshold: 0.1,
-      rootMargin: '0px 0px -50px 0px'
-    }
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible')
-        }
-      })
-    }, observerOptions)
-
-    // 觀察所有需要動畫的元素
-    const elements = document.querySelectorAll('.fade-in')
-    elements.forEach(el => observer.observe(el))
-
-    return () => {
-      elements.forEach(el => observer.unobserve(el))
-    }
-  }, [])
-
   return (
-    <div className="min-h-screen">
-      <div className="pt-16">
-        <Hero />
+    <div className="min-h-screen bg-gradient-to-b from-gray-900 to-gray-800 pt-16">
+      <div className="h-[calc(100vh-4rem)] flex flex-col items-center justify-center px-4">
+        {/* 品牌大圖區域 */}
+        <div className="text-center mb-8">
+          <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-light text-white mb-6 tracking-wide">
+            BURGER O'CLOCK
+          </h1>
+          <div className="w-32 h-1 bg-yellow-400 mx-auto mb-8"></div>
+          <p className="text-xl sm:text-2xl md:text-3xl text-gray-300 font-light">
+            在 Burger O'clock，我們相信每一口漢堡都應該承載著滿滿的靈魂。
+          </p>
+        </div>
       </div>
-      <BrandStory />
     </div>
   )
 }

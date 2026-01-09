@@ -45,7 +45,7 @@ function InfoPage() {
             </div>
             <div>
               <p className="font-medium mb-1">電話</p>
-              <p>0900 777 093</p>
+              <p>0900-777-093</p>
             </div>
             <div>
               <p className="font-medium mb-1">營業時間</p>
