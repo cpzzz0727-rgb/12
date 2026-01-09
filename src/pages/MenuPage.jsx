@@ -98,15 +98,19 @@ function MenuPage() {
                         </h3>
                         {item.isRecommended && (
                           <span 
-                            className="text-xs font-bold px-3 py-1.5 rounded-lg inline-flex items-center gap-1.5"
                             style={{
+                              display: 'inline-flex',
+                              alignItems: 'center',
+                              gap: '0.375rem',
+                              fontSize: '0.75rem',
+                              fontWeight: 800,
+                              padding: '0.375rem 0.75rem',
+                              borderRadius: '0.5rem',
                               backgroundColor: '#fbbf24',
                               color: '#1f2937',
-                              fontWeight: 800,
                               letterSpacing: '0.08em',
                               boxShadow: '0 3px 6px rgba(251, 191, 36, 0.4)',
                               border: '1px solid rgba(251, 191, 36, 0.5)',
-                              fontSize: '0.75rem',
                               lineHeight: '1.2'
                             }}
                           >

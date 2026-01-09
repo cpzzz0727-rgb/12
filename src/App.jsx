@@ -6,9 +6,17 @@ import InfoPage from './pages/InfoPage'
 
 function App() {
   return (
-    <div className="min-h-screen flex flex-col">
+    <div style={{
+      minHeight: '100vh',
+      display: 'flex',
+      flexDirection: 'column',
+      backgroundColor: '#ffffff'
+    }}>
       <Navbar />
-      <main className="flex-1">
+      <main style={{
+        flex: 1,
+        width: '100%'
+      }}>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/menu" element={<MenuPage />} />
@@ -21,7 +29,8 @@ function App() {
         backgroundColor: '#ffffff',
         padding: '2rem 1rem',
         textAlign: 'center',
-        borderTop: '1px solid #e5e7eb'
+        borderTop: '1px solid #e5e7eb',
+        width: '100%'
       }}>
         <div style={{
           maxWidth: '800px',
