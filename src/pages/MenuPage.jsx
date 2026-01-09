@@ -4,11 +4,9 @@ import menuData from '../menuData.ts'
 // Tab 分類映射
 const tabCategories = {
   '牛肉堡': ['牛肉堡'],
-  '雞肉堡': ['雞肉堡'],
-  '熱狗': ['熱狗'],
-  '素食': ['素食'],
+  '雞肉與熱狗': ['雞肉堡', '熱狗', '素食'],
   '點心': ['點心'],
-  '飲品/甜點': ['飲品/甜點']
+  '飲品甜點': ['飲品/甜點']
 }
 
 function MenuPage() {
@@ -94,10 +92,10 @@ function MenuPage() {
         <div className="mt-20 pt-12 border-t border-gray-200">
           <div className="text-center space-y-4">
             <p className="text-sm text-gray-600">
-              每人低消 100 元
+              低消 100 元
             </p>
             <p className="text-sm text-gray-600">
-              採自助式點餐，不收服務費
+              無服務費
             </p>
             <p className="text-sm text-gray-600">
               飲品請至櫃檯挑選

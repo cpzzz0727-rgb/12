@@ -10,7 +10,7 @@ function Navbar() {
       <div className="max-w-6xl mx-auto px-6 py-4">
         <div className="flex justify-between items-center">
           <Link to="/" className="text-xl font-light text-gray-900 hover:text-gray-600 transition-colors tracking-wide">
-            BURGER O'CLOCK
+            BURGER O'CLOCK TAIPEI
           </Link>
           <div className="flex gap-6">
             <Link
@@ -31,7 +31,7 @@ function Navbar() {
                   : 'text-gray-500 hover:text-gray-900'
               }`}
             >
-              菜單
+              美味菜單
             </Link>
             <Link
               to="/info"
@@ -41,7 +41,7 @@ function Navbar() {
                   : 'text-gray-500 hover:text-gray-900'
               }`}
             >
-              資訊
+              聯絡我們
             </Link>
           </div>
         </div>
