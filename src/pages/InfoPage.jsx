@@ -79,7 +79,7 @@ function InfoPage() {
               </a>
               
               <a 
-                href="https://www.ubereats.com/tw/store/burger-oclock/T7I5K9yXQY6_yV3yG5_f0Q" 
+                href="https://www.ubereats.com/store-browse-uuid/3775e491-a246-4430-a302-df86693ea25d?diningMode=DELIVERY" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-6 py-2 bg-green-600 text-white rounded hover:bg-green-700 transition-colors"
