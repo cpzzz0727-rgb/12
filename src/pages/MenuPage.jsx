@@ -69,12 +69,13 @@ function MenuPage() {
                         </h3>
                         {item.isRecommended && (
                           <span 
-                            className="text-xs font-bold px-2 py-1 rounded"
+                            className="text-xs font-bold px-3 py-1 rounded-md inline-flex items-center gap-1"
                             style={{
                               backgroundColor: '#fbbf24',
-                              color: '#ffffff',
+                              color: '#1f2937',
                               fontWeight: 700,
-                              letterSpacing: '0.05em'
+                              letterSpacing: '0.05em',
+                              boxShadow: '0 2px 4px rgba(251, 191, 36, 0.3)'
                             }}
                           >
                             ⭐ 推薦
