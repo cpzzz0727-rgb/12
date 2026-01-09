@@ -86,6 +86,7 @@ function Home() {
 
       {/* 第二區塊：Google 地圖區域 - 獨立區塊，垂直排列在圖片下方 */}
       <section style={{
+        position: 'relative',
         width: '100%',
         backgroundColor: '#ffffff',
         paddingTop: '5rem',
