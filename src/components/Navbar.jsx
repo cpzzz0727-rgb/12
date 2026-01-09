@@ -30,7 +30,7 @@ function Navbar() {
     { path: '/', label: '首頁' },
     { path: '/menu', label: '美味菜單' },
     { path: '/info', label: '聯絡資訊' }
-  }
+  ]
 
   // 漢堡圖標 SVG（不使用外部庫，確保顯示）
   const HamburgerIcon = () => (
