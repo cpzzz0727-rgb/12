@@ -68,7 +68,17 @@ function MenuPage() {
                           {item.name_zh}
                         </h3>
                         {item.isRecommended && (
-                          <span className="text-xs text-gray-500">推薦</span>
+                          <span 
+                            className="text-xs font-bold px-2 py-1 rounded"
+                            style={{
+                              backgroundColor: '#fbbf24',
+                              color: '#ffffff',
+                              fontWeight: 700,
+                              letterSpacing: '0.05em'
+                            }}
+                          >
+                            ⭐ 推薦
+                          </span>
                         )}
                       </div>
                       <p className="text-sm text-gray-500 mb-2">

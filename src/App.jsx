@@ -30,7 +30,20 @@ function App() {
           fontFamily: 'Arial, "Microsoft JhengHei", sans-serif',
           margin: 0
         }}>
-          Edward 網頁開發
+          <a 
+            href="https://edward920727.github.io/edward/" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            style={{
+              color: '#6b7280',
+              textDecoration: 'none',
+              transition: 'color 0.2s'
+            }}
+            onMouseEnter={(e) => e.target.style.color = '#111827'}
+            onMouseLeave={(e) => e.target.style.color = '#6b7280'}
+          >
+            Edward 網頁開發
+          </a>
         </p>
       </footer>
     </div>
