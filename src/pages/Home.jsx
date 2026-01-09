@@ -1,61 +1,56 @@
 function Home() {
   return (
     <div style={{ 
-      minHeight: '100vh', 
-      paddingTop: '64px',
-      position: 'relative',
-      overflow: 'hidden'
+      paddingTop: '64px'
     }}>
-      {/* 漢堡背景圖片 */}
-      <div style={{
-        position: 'absolute',
-        top: 0,
-        left: 0,
-        right: 0,
-        bottom: 0,
-        width: '100%',
-        height: '100%',
-        backgroundImage: 'url(https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=1920&q=80)',
-        backgroundAttachment: 'fixed',
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundRepeat: 'no-repeat',
-        opacity: 0.5,
-        zIndex: 0
-      }}></div>
-      
-      {/* 深色遮罩 */}
-      <div style={{
-        position: 'absolute',
-        top: 0,
-        left: 0,
-        right: 0,
-        bottom: 0,
-        width: '100%',
-        height: '100%',
-        backgroundColor: 'rgba(0, 0, 0, 0.5)',
-        zIndex: 1
-      }}></div>
-      
-      {/* 內容區域 */}
+      {/* 漢堡背景圖片區域 */}
       <div style={{ 
         position: 'relative',
-        zIndex: 2,
-        minHeight: 'calc(100vh - 64px)', 
-        display: 'flex', 
-        flexDirection: 'column',
-        paddingBottom: '3rem'
+        minHeight: 'calc(100vh - 64px)',
+        overflow: 'hidden'
       }}>
+        {/* 背景圖片 */}
+        <div style={{
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          width: '100%',
+          height: '100%',
+          backgroundImage: 'url(https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=1920&q=80)',
+          backgroundAttachment: 'fixed',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+          opacity: 0.5,
+          zIndex: 0
+        }}></div>
+        
+        {/* 深色遮罩 */}
+        <div style={{
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          width: '100%',
+          height: '100%',
+          backgroundColor: 'rgba(0, 0, 0, 0.5)',
+          zIndex: 1
+        }}></div>
+        
         {/* 品牌大圖區域 */}
         <div style={{ 
-          textAlign: 'center',
-          flex: 1,
+          position: 'relative',
+          zIndex: 2,
+          minHeight: 'calc(100vh - 64px)',
           display: 'flex',
           flexDirection: 'column',
           alignItems: 'center',
           justifyContent: 'center',
           padding: '1rem',
-          minHeight: 'calc(100vh - 400px)'
+          textAlign: 'center'
         }}>
           <h1 style={{ 
             fontSize: 'clamp(2.5rem, 8vw, 6rem)',
@@ -78,48 +73,45 @@ function Home() {
             在 Burger O'clock，我們相信每一口漢堡都應該承載著滿滿的靈魂。
           </p>
         </div>
+      </div>
 
-        {/* Google 地圖區域 */}
+      {/* Google 地圖區域 - 獨立區塊，在圖片下方 */}
+      <div style={{
+        width: '100%',
+        maxWidth: '1200px',
+        margin: '0 auto',
+        padding: '3rem 1rem',
+        backgroundColor: '#ffffff'
+      }}>
         <div style={{
-          position: 'relative',
-          zIndex: 2,
           width: '100%',
-          maxWidth: '1200px',
-          margin: '0 auto',
-          padding: '0 1rem 3rem',
-          backgroundColor: 'rgba(255, 255, 255, 0.95)',
-          borderRadius: '8px 8px 0 0'
+          height: '400px',
+          borderRadius: '8px',
+          overflow: 'hidden',
+          boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)'
         }}>
-          <div style={{
-            width: '100%',
-            height: '400px',
-            borderRadius: '8px',
-            overflow: 'hidden',
-            boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)'
+          <iframe
+            src="https://www.google.com/maps?q=台北市士林區中山北路七段36號&output=embed&hl=zh-TW"
+            width="100%"
+            height="100%"
+            style={{ border: 0 }}
+            allowFullScreen=""
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+            title="Burger O'clock 位置地圖"
+          ></iframe>
+        </div>
+        <div style={{
+          marginTop: '1rem',
+          textAlign: 'center'
+        }}>
+          <p style={{
+            fontSize: '0.875rem',
+            color: '#4b5563',
+            margin: 0
           }}>
-            <iframe
-              src="https://www.google.com/maps?q=台北市士林區中山北路七段36號&output=embed&hl=zh-TW"
-              width="100%"
-              height="100%"
-              style={{ border: 0 }}
-              allowFullScreen=""
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-              title="Burger O'clock 位置地圖"
-            ></iframe>
-          </div>
-          <div style={{
-            marginTop: '1rem',
-            textAlign: 'center'
-          }}>
-            <p style={{
-              fontSize: '0.875rem',
-              color: '#4b5563',
-              margin: 0
-            }}>
-              📍 台北市士林區中山北路七段36號
-            </p>
-          </div>
+            📍 台北市士林區中山北路七段36號
+          </p>
         </div>
       </div>
     </div>
