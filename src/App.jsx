@@ -6,13 +6,33 @@ import InfoPage from './pages/InfoPage'
 
 function App() {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen flex flex-col">
       <Navbar />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/menu" element={<MenuPage />} />
-        <Route path="/info" element={<InfoPage />} />
-      </Routes>
+      <main className="flex-1">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/menu" element={<MenuPage />} />
+          <Route path="/info" element={<InfoPage />} />
+        </Routes>
+      </main>
+      
+      {/* Footer - 顯示在所有頁面 */}
+      <footer style={{
+        backgroundColor: '#ffffff',
+        padding: '2rem 1rem',
+        textAlign: 'center',
+        borderTop: '1px solid #e5e7eb'
+      }}>
+        <p style={{
+          fontSize: '0.875rem',
+          color: '#6b7280',
+          fontWeight: 400,
+          fontFamily: 'Arial, "Microsoft JhengHei", sans-serif',
+          margin: 0
+        }}>
+          Edward 網頁開發
+        </p>
+      </footer>
     </div>
   )
 }
