@@ -4,7 +4,12 @@ function Navbar() {
   const location = useLocation()
 
   const isActive = (path) => {
-    const currentPath = location.pathname.replace('/12', '')
+    // 處理 basename，移除前綴
+    let currentPath = location.pathname
+    if (currentPath.startsWith('/12')) {
+      currentPath = currentPath.replace('/12', '')
+    }
+    
     if (path === '/') {
       return currentPath === '/' || currentPath === ''
     }
