@@ -106,6 +106,34 @@ if ($indexHtml -match $cssPattern) {
 # Save the fixed index.html
 [System.IO.File]::WriteAllText((Resolve-Path "index.html"), $indexHtml, [System.Text.Encoding]::UTF8)
 
+# Step 5: Fix 404-template.html files if they exist
+Write-Host "[5/5] Fixing 404-template.html files..." -ForegroundColor Yellow
+$templateFiles = @("404-template.html", "public\404-template.html", "dist\404-template.html")
+foreach ($templateFile in $templateFiles) {
+    if (Test-Path $templateFile) {
+        $templateContent = Get-Content $templateFile -Raw -Encoding UTF8
+        if ($templateContent -match 'src="[^"]*assets/([^"]+)"') {
+            $oldJsRef = $matches[1]
+            if ($oldJsRef -ne $jsFile) {
+                Write-Host "  Fixing $templateFile JS reference..." -ForegroundColor Gray
+                $templateContent = $templateContent -replace [regex]::Escape("src=`"./assets/$oldJsRef`""), "src=`"./assets/$jsFile`""
+                $templateContent = $templateContent -replace [regex]::Escape("src=`"/12/assets/$oldJsRef`""), "src=`"./assets/$jsFile`""
+            }
+        }
+        if ($templateContent -match 'href="[^"]*assets/([^"]+)"') {
+            $oldCssRef = $matches[1]
+            if ($oldCssRef -ne $cssFile) {
+                Write-Host "  Fixing $templateFile CSS reference..." -ForegroundColor Gray
+                $templateContent = $templateContent -replace [regex]::Escape("href=`"./assets/$oldCssRef`""), "href=`"./assets/$cssFile`""
+                $templateContent = $templateContent -replace [regex]::Escape("href=`"/12/assets/$oldCssRef`""), "href=`"./assets/$cssFile`""
+            }
+        }
+        [System.IO.File]::WriteAllText((Resolve-Path $templateFile), $templateContent, [System.Text.Encoding]::UTF8)
+        Write-Host "  OK: $templateFile updated" -ForegroundColor Green
+    }
+}
+Write-Host ""
+
 Write-Host ""
 Write-Host "========================================" -ForegroundColor Cyan
 Write-Host "OK: Deployment completed!" -ForegroundColor Green
