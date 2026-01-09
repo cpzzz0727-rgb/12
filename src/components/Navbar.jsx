@@ -130,6 +130,7 @@ function Navbar() {
             {isMobile && (
               <button
                 onClick={toggleMenu}
+                type="button"
                 style={{
                   background: 'none',
                   border: 'none',
@@ -139,16 +140,18 @@ function Navbar() {
                   alignItems: 'center',
                   justifyContent: 'center',
                   color: '#111827',
-                  transition: 'color 0.2s'
+                  transition: 'color 0.2s',
+                  outline: 'none'
                 }}
                 onMouseEnter={(e) => e.currentTarget.style.color = '#4b5563'}
                 onMouseLeave={(e) => e.currentTarget.style.color = '#111827'}
-                aria-label="Toggle menu"
+                aria-label={isMenuOpen ? '關閉選單' : '開啟選單'}
+                aria-expanded={isMenuOpen}
               >
                 {isMenuOpen ? (
-                  <X size={24} strokeWidth={2} />
+                  <X size={24} strokeWidth={2.5} />
                 ) : (
-                  <Menu size={24} strokeWidth={2} />
+                  <Menu size={24} strokeWidth={2.5} />
                 )}
               </button>
             )}

@@ -8,7 +8,7 @@ function Home() {
       {/* 第一區塊：漢堡大圖與歡迎詞 (Hero Section) */}
       <section style={{ 
         position: 'relative',
-        minHeight: '80vh',
+        minHeight: 'calc(100vh - 64px)',
         width: '100%',
         display: 'flex',
         alignItems: 'center',
