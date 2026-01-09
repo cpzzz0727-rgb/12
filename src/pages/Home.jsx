@@ -1,4 +1,19 @@
+import menuData from '../menuData'
+
 function Home() {
+  // 获取推荐菜品（最多6个）
+  const recommendedItems = menuData.filter(item => item.isRecommended).slice(0, 6)
+  
+  // 为每个推荐菜品分配图片（使用 Unsplash 无版权图片）
+  const itemImages = [
+    'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=800&q=80', // 汉堡
+    'https://images.unsplash.com/photo-1550547660-d9450f859349?w=800&q=80', // 汉堡
+    'https://images.unsplash.com/photo-1553979459-d2229ba7433f?w=800&q=80', // 汉堡
+    'https://images.unsplash.com/photo-1528607929212-2636ec44253e?w=800&q=80', // 汉堡
+    'https://images.unsplash.com/photo-1551782450-17144efb9c50?w=800&q=80', // 汉堡
+    'https://images.unsplash.com/photo-1550547660-d9450f859349?w=800&q=80', // 汉堡
+  ]
+
   return (
     <div style={{ 
       width: '100%',
@@ -127,6 +142,166 @@ function Home() {
             }}>
               📍 台北市士林區中山北路七段36號
             </p>
+          </div>
+        </div>
+      </section>
+
+      {/* 第三區塊：熱賣餐點 - 黑底區域 */}
+      <section style={{
+        position: 'relative',
+        width: '100%',
+        backgroundColor: '#111827',
+        paddingTop: '5rem',
+        paddingBottom: '5rem',
+        paddingLeft: '1rem',
+        paddingRight: '1rem'
+      }}>
+        <div style={{
+          maxWidth: '1200px',
+          margin: '0 auto'
+        }}>
+          {/* 標題 */}
+          <div style={{
+            textAlign: 'center',
+            marginBottom: '3rem'
+          }}>
+            <h2 style={{
+              fontSize: 'clamp(2rem, 5vw, 3rem)',
+              fontWeight: 300,
+              color: '#ffffff',
+              marginBottom: '1rem',
+              letterSpacing: '0.05em'
+            }}>
+              熱賣餐點
+            </h2>
+            <div style={{
+              width: '128px',
+              height: '4px',
+              backgroundColor: '#fbbf24',
+              margin: '0 auto'
+            }}></div>
+          </div>
+
+          {/* 推薦菜品網格 */}
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+            gap: '2rem',
+            marginTop: '3rem'
+          }}>
+            {recommendedItems.map((item, index) => (
+              <div
+                key={item.id}
+                style={{
+                  backgroundColor: '#1f2937',
+                  borderRadius: '12px',
+                  overflow: 'hidden',
+                  boxShadow: '0 4px 6px rgba(0, 0, 0, 0.3)',
+                  transition: 'transform 0.3s ease, box-shadow 0.3s ease',
+                  cursor: 'pointer'
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.transform = 'translateY(-8px)'
+                  e.currentTarget.style.boxShadow = '0 8px 16px rgba(0, 0, 0, 0.5)'
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.transform = 'translateY(0)'
+                  e.currentTarget.style.boxShadow = '0 4px 6px rgba(0, 0, 0, 0.3)'
+                }}
+              >
+                {/* 圖片 */}
+                <div style={{
+                  width: '100%',
+                  height: '200px',
+                  overflow: 'hidden',
+                  backgroundColor: '#374151'
+                }}>
+                  <img
+                    src={itemImages[index] || itemImages[0]}
+                    alt={item.name_zh}
+                    style={{
+                      width: '100%',
+                      height: '100%',
+                      objectFit: 'cover',
+                      transition: 'transform 0.3s ease'
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.transform = 'scale(1.1)'
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.transform = 'scale(1)'
+                    }}
+                  />
+                </div>
+
+                {/* 內容 */}
+                <div style={{
+                  padding: '1.5rem'
+                }}>
+                  <div style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '0.5rem',
+                    marginBottom: '0.5rem'
+                  }}>
+                    <h3 style={{
+                      fontSize: '1.25rem',
+                      fontWeight: 600,
+                      color: '#ffffff',
+                      margin: 0,
+                      flex: 1
+                    }}>
+                      {item.name_zh}
+                    </h3>
+                    <span style={{
+                      fontSize: '0.75rem',
+                      fontWeight: 800,
+                      padding: '0.25rem 0.75rem',
+                      borderRadius: '12px',
+                      backgroundColor: '#fbbf24',
+                      color: '#1f2937',
+                      letterSpacing: '0.05em'
+                    }}>
+                      推薦
+                    </span>
+                  </div>
+                  
+                  <p style={{
+                    fontSize: '0.875rem',
+                    color: '#9ca3af',
+                    margin: '0 0 0.75rem 0',
+                    lineHeight: 1.5
+                  }}>
+                    {item.name_en}
+                  </p>
+
+                  <p style={{
+                    fontSize: '0.875rem',
+                    color: '#d1d5db',
+                    margin: '0 0 1rem 0',
+                    lineHeight: 1.6
+                  }}>
+                    {item.description}
+                  </p>
+
+                  <div style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'space-between',
+                    paddingTop: '1rem',
+                    borderTop: '1px solid #374151'
+                  }}>
+                    <span style={{
+                      fontSize: '1.5rem',
+                      fontWeight: 300,
+                      color: '#fbbf24'
+                    }}>
+                      ${item.price === 0 ? '免費' : item.price}
+                    </span>
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
