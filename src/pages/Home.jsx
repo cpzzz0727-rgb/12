@@ -41,15 +41,22 @@ function Home() {
       <div style={{ 
         position: 'relative',
         zIndex: 2,
-        height: 'calc(100vh - 64px)', 
+        minHeight: 'calc(100vh - 64px)', 
         display: 'flex', 
-        flexDirection: 'column', 
-        alignItems: 'center', 
-        justifyContent: 'center', 
-        padding: '1rem' 
+        flexDirection: 'column',
+        paddingBottom: '3rem'
       }}>
         {/* 品牌大圖區域 */}
-        <div style={{ textAlign: 'center' }}>
+        <div style={{ 
+          textAlign: 'center',
+          flex: 1,
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          justifyContent: 'center',
+          padding: '1rem',
+          minHeight: 'calc(100vh - 400px)'
+        }}>
           <h1 style={{ 
             fontSize: 'clamp(2.5rem, 8vw, 6rem)',
             fontWeight: 300,
@@ -70,6 +77,49 @@ function Home() {
           }}>
             在 Burger O'clock，我們相信每一口漢堡都應該承載著滿滿的靈魂。
           </p>
+        </div>
+
+        {/* Google 地圖區域 */}
+        <div style={{
+          position: 'relative',
+          zIndex: 2,
+          width: '100%',
+          maxWidth: '1200px',
+          margin: '0 auto',
+          padding: '0 1rem 3rem',
+          backgroundColor: 'rgba(255, 255, 255, 0.95)',
+          borderRadius: '8px 8px 0 0'
+        }}>
+          <div style={{
+            width: '100%',
+            height: '400px',
+            borderRadius: '8px',
+            overflow: 'hidden',
+            boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)'
+          }}>
+            <iframe
+              src="https://www.google.com/maps?q=台北市士林區中山北路七段36號&output=embed&hl=zh-TW"
+              width="100%"
+              height="100%"
+              style={{ border: 0 }}
+              allowFullScreen=""
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              title="Burger O'clock 位置地圖"
+            ></iframe>
+          </div>
+          <div style={{
+            marginTop: '1rem',
+            textAlign: 'center'
+          }}>
+            <p style={{
+              fontSize: '0.875rem',
+              color: '#4b5563',
+              margin: 0
+            }}>
+              📍 台北市士林區中山北路七段36號
+            </p>
+          </div>
         </div>
       </div>
     </div>

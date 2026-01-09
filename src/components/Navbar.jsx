@@ -30,34 +30,52 @@ function Navbar() {
         width: '100%'
       }}
     >
-      <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 1rem' }}>
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', height: '64px' }}>
+      <div style={{ maxWidth: '1280px', margin: '0 auto', padding: '0 clamp(0.5rem, 2vw, 1rem)' }}>
+        <div style={{ 
+          display: 'flex', 
+          justifyContent: 'space-between', 
+          alignItems: 'center', 
+          height: '64px', 
+          flexWrap: 'nowrap',
+          gap: '0.5rem'
+        }}>
           <Link 
             to="/" 
+            className="navbar-brand"
             style={{ 
-              fontSize: '1.125rem',
+              fontSize: 'clamp(0.75rem, 2.5vw, 1.125rem)',
               fontWeight: 300,
               color: '#111827',
               textDecoration: 'none',
               letterSpacing: '0.05em',
-              whiteSpace: 'nowrap'
+              whiteSpace: 'nowrap',
+              flexShrink: 0,
+              maxWidth: 'calc(100% - 200px)',
+              overflow: 'hidden',
+              textOverflow: 'ellipsis'
             }}
             onMouseEnter={(e) => e.target.style.color = '#4b5563'}
             onMouseLeave={(e) => e.target.style.color = '#111827'}
           >
             BURGER O'CLOCK TAIPEI
           </Link>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '2rem' }}>
+          <div style={{ 
+            display: 'flex', 
+            alignItems: 'center', 
+            gap: 'clamp(0.5rem, 1.5vw, 1.5rem)', 
+            flexShrink: 0 
+          }}>
             <Link
               to="/"
               style={{ 
-                fontSize: '0.875rem',
+                fontSize: 'clamp(0.7rem, 1.8vw, 0.875rem)',
                 fontWeight: 500,
                 color: isActive('/') ? '#111827' : '#4b5563',
                 textDecoration: 'none',
                 paddingBottom: '4px',
                 borderBottom: isActive('/') ? '2px solid #111827' : 'none',
-                transition: 'all 0.2s'
+                transition: 'all 0.2s',
+                whiteSpace: 'nowrap'
               }}
               onMouseEnter={(e) => {
                 if (!isActive('/')) {
@@ -75,13 +93,14 @@ function Navbar() {
             <Link
               to="/menu"
               style={{ 
-                fontSize: '0.875rem',
+                fontSize: 'clamp(0.7rem, 1.8vw, 0.875rem)',
                 fontWeight: 500,
                 color: isActive('/menu') ? '#111827' : '#4b5563',
                 textDecoration: 'none',
                 paddingBottom: '4px',
                 borderBottom: isActive('/menu') ? '2px solid #111827' : 'none',
-                transition: 'all 0.2s'
+                transition: 'all 0.2s',
+                whiteSpace: 'nowrap'
               }}
               onMouseEnter={(e) => {
                 if (!isActive('/menu')) {
@@ -99,13 +118,14 @@ function Navbar() {
             <Link
               to="/info"
               style={{ 
-                fontSize: '0.875rem',
+                fontSize: 'clamp(0.7rem, 1.8vw, 0.875rem)',
                 fontWeight: 500,
                 color: isActive('/info') ? '#111827' : '#4b5563',
                 textDecoration: 'none',
                 paddingBottom: '4px',
                 borderBottom: isActive('/info') ? '2px solid #111827' : 'none',
-                transition: 'all 0.2s'
+                transition: 'all 0.2s',
+                whiteSpace: 'nowrap'
               }}
               onMouseEnter={(e) => {
                 if (!isActive('/info')) {
